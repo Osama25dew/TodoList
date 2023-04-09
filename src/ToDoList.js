@@ -9,12 +9,23 @@ export const ToDoList=()=>{
     const addTask=()=>{
         const task={
             id:addNewTask.length==0?1:addNewTask[addNewTask.length-1].id+1,
-            taskName:newText
+            taskName:newText,
+            completed:false
         }
         setAddNewTask([...addNewTask, task])
     }
     const removeTask=(id)=>{
         setAddNewTask(addNewTask.filter((tsk)=>{return tsk.id!==id}))
+    }
+    const completeTask=(id)=>{
+        setAddNewTask(addNewTask.map((task)=>{
+            if(task.id===id){
+                return{...task,completed:true} //that means k sare task wese hi aye ge with the opdation of completed
+            }
+            else{
+                return task //yaha task ko bracket mai nai likhna
+            }
+        }))
     }
     const removeAll=()=>{
         setAddNewTask([])
@@ -29,7 +40,7 @@ export const ToDoList=()=>{
         </div>
         <div>
             {addNewTask.map((tasks)=>{
-                return <Task taskName={tasks.taskName} id={tasks.id} removeTask={removeTask}></Task>})}
+                return <Task taskName={tasks.taskName} id={tasks.id} completed={tasks.completed} removeTask={removeTask} completeTask={completeTask}></Task>})}
         </div>
         {addNewTask.length>=1&&<button className="removeAll" onClick={removeAll}>Remove All</button>}   
     </div>

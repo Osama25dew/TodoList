@@ -131,3 +131,13 @@ body{
   width: 100px;
   border-radius: 5px;
 }
+#complete, #remove{
+  background-color: #6583e5;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  height: 100%;
+  width: 100px;
+  border-radius: 5px;
+}
